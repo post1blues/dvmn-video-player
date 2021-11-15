@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <style type="text/css">
+    #player {
+      display: flex;
+      flex-direction: column;
+      width: 800px;
+      height: 600px;
+      box-shadow: 0 0 10px rgba(0,0,0,1);
+    }
+    .js-video-container {
+      flex-grow: 1;
+    }
+    .nav-panel {
+      background-color: black;
+      display: flex;
+    }
+    .nav-panel > div {
+      flex-grow: 1;
+    }
+    button {
+      border-style: none;
+      cursor: pointer;
+      background-color: transparent;
+      font-size: 20px;
+      margin: 0 5px 0 5px
+    }
+    i {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="player">
+
+    <div class="js-video-container"></div>
+
+    <div class="nav-panel">
+      <button class="js-play-button">
+        <i class="fa fa-play" aria-hidden="true"></i>
+      </button>
+      <button class="js-pause-button" hidden>
+        <i class="fa fa-pause" aria-hidden="true"></i>
+      </button>
+      <button class="js-volume-button"><i class="fa fa-volume-off" aria-hidden="true"></i></button>
+      <button class="js-mute-button" hidden><i class="fa fa-volume-up" aria-hidden="true"></i></button>
+      <div></div>
+      <button class="js-fullscreen-button"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+  <script src="js/player.js"></script>
+
+  <script type="text/javascript">
+    createPlayer({
+      elementId: 'player',
+    });
+  </script>
+
+</body>
+</html>
