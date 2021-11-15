@@ -1,7 +1,8 @@
 # Верстка видеоплеера
 Данный проект - это верстка и стилизация простого видеоплеера с кнопками "Play", "Pause" и "Full screen".
 Проект использует js-библиотеку [video-player-jslib](https://github.com/devmanorg/video-player-jslib).
-![image](https://user-images.githubusercontent.com/36712818/141781166-8f4c4355-2fe1-4be5-adab-02770f1e3f5e.png)
+![image](https://user-images.githubusercontent.com/36712818/141781322-34cb17ee-f2b1-4f43-9460-179865554ea4.png)
+
 
 ## Пример плеера
 Пример плеера можно посмотреть [тут]()
