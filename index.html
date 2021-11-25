@@ -8,51 +8,51 @@
     <title>Document</title>
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <style type="text/css">
-    #player {
+    .video-player {
       display: flex;
       flex-direction: column;
       width: 800px;
       height: 600px;
       box-shadow: 0 0 10px rgba(0,0,0,1);
     }
-    .js-video-container {
+    .video-container {
       flex-grow: 1;
     }
-    .nav-panel {
+    .video-bottom-controls {
       background-color: black;
       display: flex;
     }
-    .nav-panel > div {
+    .video-bottom-controls > div {
       flex-grow: 1;
     }
-    button {
+    .video-control-btn {
       border-style: none;
       cursor: pointer;
       background-color: transparent;
       font-size: 20px;
-      margin: 0 5px 0 5px
+      margin: 5px 5px 5px 5px;
     }
-    i {
+    .icon {
       color: white;
     }
   </style>
 </head>
 <body>
-  <div id="player">
+  <div id="player" class="video-player">
 
-    <div class="js-video-container"></div>
+    <div class="js-video-container video-container"></div>
 
-    <div class="nav-panel">
-      <button class="js-play-button">
-        <i class="fa fa-play" aria-hidden="true"></i>
+    <div class="video-bottom-controls">
+      <button class="js-play-button video-control-btn">
+        <i class="fa fa-play icon" aria-hidden="true"></i>
       </button>
-      <button class="js-pause-button" hidden>
-        <i class="fa fa-pause" aria-hidden="true"></i>
+      <button class="js-pause-button video-control-btn" hidden>
+        <i class="fa fa-pause icon" aria-hidden="true"></i>
       </button>
-      <button class="js-volume-button"><i class="fa fa-volume-off" aria-hidden="true"></i></button>
-      <button class="js-mute-button" hidden><i class="fa fa-volume-up" aria-hidden="true"></i></button>
+      <button class="js-volume-button video-control-btn"><i class="fa fa-volume-off icon" aria-hidden="true"></i></button>
+      <button class="js-mute-button video-control-btn" hidden><i class="fa fa-volume-up icon" aria-hidden="true"></i></button>
       <div></div>
-      <button class="js-fullscreen-button"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+      <button class="js-fullscreen-button video-control-btn"><i class="fa fa-arrows-alt icon" aria-hidden="true"></i></button>
     </div>
   </div>
 
