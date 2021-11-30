@@ -42,6 +42,14 @@
     .video-control-btn-icon {
       color: white;
     }
+
+    .video-time {
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 5px 5px 5px;
+    }
   </style>
 </head>
 <body>
@@ -58,7 +66,13 @@
       </button>
       <button class="js-volume-button video-control-btn"><i class="fa fa-volume-off video-control-btn-icon" aria-hidden="true"></i></button>
       <button class="js-mute-button video-control-btn" hidden><i class="fa fa-volume-up video-control-btn-icon" aria-hidden="true"></i></button>
-      <div></div>
+
+      <div class="video-time">
+        <span class="js-current-time video-time-current"></span>
+        <div></div>
+        <span class="js-duration video-time-duration"></span>
+      </div>
+
       <button class="js-fullscreen-button video-control-btn"><i class="fa fa-arrows-alt video-control-btn-icon" aria-hidden="true"></i></button>
     </div>
   </div>
