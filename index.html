@@ -1,87 +1,142 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Video Player</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <style type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <style>
     .video-player {
       display: flex;
       flex-direction: column;
       width: 800px;
       height: 600px;
+      margin: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,1);
       font-family: 'Roboto', sans-serif;
+      font-weight: 400;
     }
+
     .video-container {
+      width: 100%;
+      height: 100%;
       flex-grow: 1;
     }
-    .video-bottom-controls {
-      background-color: black;
+
+    .video-nav-bottom {
+      background: black;
       display: flex;
     }
-    .video-bottom-controls > div {
-      flex-grow: 1;
-    }
-    .video-control-btn {
+
+    .video-button {
       border-style: none;
       cursor: pointer;
       background-color: transparent;
+      margin: 6px 3px 7px 2px;
       font-size: 20px;
-      margin: 5px 5px 5px 5px;
-      width: 25px;
-      height: 25px;
+      height: 30px;
+      width: 30px;
     }
-    .video-control-btn-icon {
+
+    .video-icon {
       color: white;
     }
 
-    .video-time {
+    .video-progressbar-panel {
       color: white;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 5px 5px 5px 5px;
+      flex-direction: row;
+      flex-grow: 1;
+      margin-top: 11px;
+      padding-left: 2px;
+      margin-right: 4px;
     }
+
+    .video-progressbar {
+      flex-grow: 1;
+      align-items: center;
+      margin: 0 10px 10px 10px;
+    }
+
+    .progressbar-slider {
+      margin-top: 8px;
+      background-color: red;
+      height: 5px;
+      border-radius: 5px;
+    }
+
+    .video-progressbar-line {
+      background-color: black;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .video-dot {
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: red;
+      border-style: solid;
+      border-width: 2px;
+      border-color: white;
+      box-shadow: 0 0 1px 1px white;
+      margin: 4px 4px 4px -4px;
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in;
+    }
+
+    .video-progressbar-line:hover .video-dot {
+      opacity: 100%;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
+    }
+
   </style>
 </head>
 <body>
+
   <div id="player" class="video-player">
-
-    <div class="js-video-container video-container"></div>
-
-    <div class="video-bottom-controls">
-      <button class="js-play-button video-control-btn">
-        <i class="fa fa-play video-control-btn-icon" aria-hidden="true"></i>
-      </button>
-      <button class="js-pause-button video-control-btn" hidden>
-        <i class="fa fa-pause video-control-btn-icon" aria-hidden="true"></i>
-      </button>
-      <button class="js-volume-button video-control-btn"><i class="fa fa-volume-off video-control-btn-icon" aria-hidden="true"></i></button>
-      <button class="js-mute-button video-control-btn" hidden><i class="fa fa-volume-up video-control-btn-icon" aria-hidden="true"></i></button>
-
-      <div class="video-time">
-        <span class="js-current-time video-time-current"></span>
-        <div></div>
-        <span class="js-duration video-time-duration"></span>
+      <div class="js-video-container video-container"></div>
+      <div class="video-nav-bottom">
+        <div class="video-buttons-left">
+          <button class="js-play-button video-button"><i class="fa fa-play video-icon" aria-hidden="true"></i></button>
+          <button class="js-pause-button video-button"><i class="fa fa-pause video-icon" aria-hidden="true"></i></button>
+          <button class="js-volume-button video-button"><i class="fa fa-volume-off video-icon" aria-hidden="true"></i></button>
+          <button class="js-mute-button video-button"><i class="fa fa-volume-up video-icon" aria-hidden="true"></i></button>
+        </div>
+        <div class="video-progressbar-panel">
+          <div class="js-current-time"></div>
+          <div class="video-progressbar">
+            <div class="js-progress video-progressbar-line">
+              <div class="js-progress-slider progressbar-slider"></div>
+              <div class="video-dot"></div>
+            </div>
+          </div>
+          <div class="js-duration"></div>
+        </div>
+        <div class="video-buttons-right">
+          <button class="js-fullscreen-button video-button"><i class="fa fa-expand video-icon" aria-hidden="true"></i></button>
+        </div>
       </div>
-
-      <button class="js-fullscreen-button video-control-btn"><i class="fa fa-arrows-alt video-control-btn-icon" aria-hidden="true"></i></button>
-    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
   <script src="js/player.js"></script>
 
-  <script type="text/javascript">
+  <script>
     createPlayer({
       elementId: 'player',
     });
